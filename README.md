@@ -22,25 +22,46 @@ Comment (optional):
 gpg --list-keys
 ```
 
-## Cryption of files under all secrets directories
+## Adds dummy sensitive data
 ``` bash
-sudo apt-get install git-crypt
+echo THIS IS SENSITIVE DATA > sensitive_data.txt
 ```
 
+
+## Cryption of files under all secrets directories
 ``` bash
+# Installation of the git-crypt command
+sudo apt-get install git-crypt
+
+# git-crypt init
 git-crypt init
 git-crypt export-key ../git-crypt-key 
-git-crypt add-gpg-user <YOUR_GPG_USER_ID>
-# sudo apt-get install git-crypt && git-crypt add-gpg-user ywatanabe@alumni.u-tokyo.ac.jp
+git-crypt add-gpg-user ywatanabe@alumni.u-tokyo.ac.jp
 
-<!-- git-encrypt-secrets # .bash.d/all/030-git.sh -->
-cat .gitattributes
-# ### git-crypt-secrets start ###
-# ./.bash.d/secrets/** filter=git-crypt diff=git-crypt
-# ./.ssh/secrets/** filter=git-crypt diff=git-crypt
-# ### git-crypt-secrets end ###
+# Tells git-crypt about which files should be encrypted on .gitattributes
+touch .gitattributes
+echo sensitive_data.txt filter=git-crypt diff=git-crypt >> .gitattributes
+
+# Commit
+git add .gitattributes
+git commit -m "Encrypt sensitive data"
+
+# Checks the encryption status
+git-crypt status
+# not encrypted: .gitattributes
+# not encrypted: .gitignore
+# not encrypted: README.md
+#     encrypted: sensitive_data.txt
+
+# git push
+git push
+
+# Lock and unlock if you want
+git-crypt lock
 git-crypt unlock
 ```
 
 ## References
 - https://dev.to/heroku/how-to-manage-your-secrets-with-git-crypt-56ih
+
+# git-encrypt-secrets # .bash.d/all/030-git.sh
