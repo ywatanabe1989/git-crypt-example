@@ -1,4 +1,4 @@
-# git-crypt-test
+# git-crypt-example
 
 ## Setups your GPG key for cryption
 
@@ -62,14 +62,14 @@ cat sensitive_data.txt # THIS IS SENSITIVE DATA
 
 git-crypt lock
 cat sensitive_data.txt
-# GITCRYPTÖ`†ý9H2ÍÅ¾Y±¬DâÃC@<ŠS™rjö—ñH
+# GITCRYPTÃ–`â€ Ã½9H2ÃÃ…Â¾YÂ±Â¬DÃ¢ÃƒC@<Å SÂâ„¢rjÃ¶â€”Ã±H
 
 git-crypt unlock                                                                
 # Error: no GPG secret key available to unlock this repository.
 # To unlock with a shared symmetric key instead, specify the path to the symmetric key as an argument to 'git-crypt unlock'.
 
 cat sensitive_data.txt
-# GITCRYPTÖ`†ý9H2ÍÅ¾Y±¬DâÃC@<ŠS™rjö—ñH
+# GITCRYPTÃ–`â€ Ã½9H2ÃÃ…Â¾YÂ±Â¬DÃ¢ÃƒC@<Å SÂâ„¢rjÃ¶â€”Ã±H
 
 git-crypt unlock ../git-crypt-key                                               
 cat sensitive_data.txt
