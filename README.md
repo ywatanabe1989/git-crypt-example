@@ -80,5 +80,3 @@ cat sensitive_data.txt
 
 ## References
 - https://dev.to/heroku/how-to-manage-your-secrets-with-git-crypt-56ih
-
-# git-encrypt-secrets # .bash.d/all/030-git.sh
