@@ -1,5 +1,8 @@
 # git-crypt-example
 
+## Installs git-crypt
+https://github.com/AGWA/git-crypt/blob/master/INSTALL.md
+
 ## Setups your GPG key for cryption
 
 ``` bash
